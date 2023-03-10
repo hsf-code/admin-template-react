@@ -1,0 +1,18 @@
+# eslint 语法检查的时候，忽略的文件/文件夹
+*.sh
+node_modules
+*.md
+*.woff
+*.ttf
+.vscode
+.idea
+dist
+/public
+/docs
+.husky
+.local
+/bin
+.eslintrc.js
+.prettierrc.js
+/src/mock/*
+
