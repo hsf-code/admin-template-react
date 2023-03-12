@@ -10,7 +10,7 @@ const BreadcrumbNav = (props: any) => {
 
 	return (
 		<>
-			{!themeConfig.breadcrumb && (
+			{themeConfig.breadcrumb && (
 				<Breadcrumb>
 					<Breadcrumb.Item href={`#${HOME_URL}`}>首页</Breadcrumb.Item>
 					{breadcrumbList.map((item: string) => {

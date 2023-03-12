@@ -20,3 +20,9 @@ export const getAuthorButtons = () => {
 export const getMenuList = () => {
 	return http.get<Menu.MenuOptions[]>(PORT1 + `/menu/list`);
 };
+// 批量导出
+export default {
+	loginApi,
+	getAuthorButtons,
+	getMenuList
+};

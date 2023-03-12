@@ -1,60 +1,56 @@
-import { useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import React, { useEffect } from "react";
 import { Layout } from "antd";
-import { setAuthButtons } from "@/redux/modules/auth/action";
+import { Outlet } from "react-router-dom";
 import { updateCollapse } from "@/redux/modules/menu/action";
-import { getAuthorButtons } from "@/api/modules/login";
 import { connect } from "react-redux";
+import BreadcrumbNav from "./components/Header/components/BreadcrumbNav";
 import LayoutMenu from "./components/Menu";
 import LayoutHeader from "./components/Header";
 import LayoutTabs from "./components/Tabs";
 import LayoutFooter from "./components/Footer";
+import AdminLogo from "./components/Menu/components/AdminLogo/index";
+
 import "./index.less";
 
-const LayoutIndex = (props: any) => {
-	const { Sider, Content } = Layout;
-	const { isCollapse, updateCollapse, setAuthButtons } = props;
+const { Header, Sider, Content } = Layout;
+const defaultTheme = "light";
 
-	// 获取按钮权限列表
-	const getAuthButtonsList = async () => {
-		const { data } = await getAuthorButtons();
-		setAuthButtons(data);
-	};
-
-	// 监听窗口大小变化
-	const listeningWindow = () => {
-		window.onresize = () => {
-			return (() => {
-				let screenWidth = document.body.clientWidth;
-				if (!isCollapse && screenWidth < 1200) updateCollapse(true);
-				if (!isCollapse && screenWidth > 1200) updateCollapse(false);
-			})();
-		};
-	};
+const LayoutIndex: React.FC = (props: any) => {
+	// 高阶组件传入进来的
+	const { updateCollapse } = props;
 
 	useEffect(() => {
-		listeningWindow();
-		getAuthButtonsList();
-	}, []);
+		updateCollapse(props.isCollapse);
+	}, [props.isCollapse]);
 
 	return (
-		// 这里不用 Layout 组件原因是切换页面时样式会先错乱然后在正常显示，造成页面闪屏效果
-		<section className="container">
-			<Sider trigger={null} collapsed={props.isCollapse} width={220} theme="dark">
-				<LayoutMenu></LayoutMenu>
-			</Sider>
-			<Layout>
+		<Layout className="container">
+			<Header className="header">
+				<AdminLogo></AdminLogo>
 				<LayoutHeader></LayoutHeader>
-				<LayoutTabs></LayoutTabs>
+			</Header>
+			<Layout>
+				{/* 左边 */}
+				<Sider trigger={null} theme={defaultTheme} width={230} collapsible collapsed={props.isCollapse}>
+					<LayoutMenu></LayoutMenu>
+				</Sider>
 				<Content>
-					<Outlet></Outlet>
+					{/* 右边 */}
+					<LayoutTabs></LayoutTabs>
+					<BreadcrumbNav />
+					<div style={{ background: "#fff" }}>
+						<Outlet></Outlet>
+					</div>
+					<LayoutFooter></LayoutFooter>
 				</Content>
-				<LayoutFooter></LayoutFooter>
 			</Layout>
-		</section>
+		</Layout>
 	);
 };
 
+// 将 state 状态作为 props 传入组件
 const mapStateToProps = (state: any) => state.menu;
-const mapDispatchToProps = { setAuthButtons, updateCollapse };
+// 将 dispatch 方法作为 props 传入组件
+const mapDispatchToProps = { updateCollapse };
+// 高阶组件
 export default connect(mapStateToProps, mapDispatchToProps)(LayoutIndex);

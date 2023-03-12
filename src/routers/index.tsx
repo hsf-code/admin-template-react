@@ -34,6 +34,9 @@ export const rootRouter: RouteObject[] = [
 	}
 ];
 
+/**
+ * 路由组件
+ * */
 const Router = () => {
 	const routes = useRoutes(rootRouter);
 	return routes;

@@ -1,4 +1,4 @@
-import { Tabs, message } from "antd";
+import { Tabs } from "antd";
 import { HomeFilled } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -10,6 +10,9 @@ import { searchRoute } from "@/utils/util";
 import MoreButton from "./components/MoreButton";
 import "./index.less";
 
+/**
+ * tabs page
+ * */
 const LayoutTabs = (props: any) => {
 	const { tabsList } = props.tabs;
 	const { themeConfig } = props.global;
@@ -19,6 +22,7 @@ const LayoutTabs = (props: any) => {
 	const navigate = useNavigate();
 	const [activeValue, setActiveValue] = useState<string>(pathname);
 
+	// watch
 	useEffect(() => {
 		addTabs();
 	}, [pathname]);
@@ -50,13 +54,12 @@ const LayoutTabs = (props: any) => {
 				navigate(nextTab.path);
 			});
 		}
-		message.success("你删除了Tabs标签 😆😆😆");
 		setTabsList(tabsList.filter((item: Menu.MenuOptions) => item.path !== tabPath));
 	};
 
 	return (
 		<>
-			{!themeConfig.tabs && (
+			{themeConfig.tabs && (
 				<div className="tabs">
 					<Tabs
 						animated
