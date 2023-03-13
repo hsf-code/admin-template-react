@@ -3,32 +3,17 @@
 	flex-direction: column;
 	justify-content: space-between;
 	height: 100%;
-	.logo-box {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		height: 55px;
-		.logo-img {
-			width: 30px;
-			margin: 0;
-		}
-		.logo-text {
-			margin: 0 0 0 10px;
-			font-size: 24px;
-			font-weight: bold;
-			color: #dadada;
-			white-space: nowrap;
-		}
+	overflow: hidden;
+	.menu-list {
+		flex: 1;
+		overflow: auto;
 	}
 	.collapse-icon {
 		display: flex;
-		justify-content: flex-end;
+		flex-direction: column;
+		justify-content: center;
 		min-height: 20px;
-		padding-right: 24px;
-		padding-bottom: 24px;
-		.collapsed {
-			cursor: pointer;
-		}
+		padding: 12px;
 	}
 	.ant-menu-root {
 		flex: 1;

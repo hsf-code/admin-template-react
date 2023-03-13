@@ -8,11 +8,11 @@ import LayoutMenu from "./components/Menu";
 import LayoutHeader from "./components/Header";
 import LayoutTabs from "./components/Tabs";
 import LayoutFooter from "./components/Footer";
-import AdminLogo from "./components/Menu/components/AdminLogo/index";
+import { APP_CSS_NAME_PREFIX } from "@/config/config";
 
 import "./index.less";
 
-const { Header, Sider, Content } = Layout;
+const { Sider, Content } = Layout;
 const defaultTheme = "light";
 
 const LayoutIndex: React.FC = (props: any) => {
@@ -24,23 +24,21 @@ const LayoutIndex: React.FC = (props: any) => {
 	}, [props.isCollapse]);
 
 	return (
-		<Layout className="container">
-			<Header className="header">
-				<AdminLogo></AdminLogo>
-				<LayoutHeader></LayoutHeader>
-			</Header>
+		<Layout className={`${APP_CSS_NAME_PREFIX}-root-container `}>
+			<LayoutHeader></LayoutHeader>
 			<Layout>
-				{/* 左边 */}
-				<Sider trigger={null} theme={defaultTheme} width={230} collapsible collapsed={props.isCollapse}>
+				{/* left content */}
+				<Sider trigger={null} theme={defaultTheme} width={200} collapsible collapsed={props.isCollapse}>
 					<LayoutMenu></LayoutMenu>
 				</Sider>
-				<Content>
-					{/* 右边 */}
+				{/* right content */}
+				<Content className={`${APP_CSS_NAME_PREFIX}-root-content `} style={{ background: "rgba(242,243,245)" }}>
 					<LayoutTabs></LayoutTabs>
 					<BreadcrumbNav />
-					<div style={{ background: "#fff" }}>
+					<main style={{ background: "#fff" }}>
+						{/* content show */}
 						<Outlet></Outlet>
-					</div>
+					</main>
 					<LayoutFooter></LayoutFooter>
 				</Content>
 			</Layout>

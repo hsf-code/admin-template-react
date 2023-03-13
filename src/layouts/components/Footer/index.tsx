@@ -1,19 +1,10 @@
 import { connect } from "react-redux";
+import React from "react";
 import "./index.less";
 
-const LayoutFooter = (props: any) => {
+const LayoutFooter: React.FC = (props: any) => {
 	const { themeConfig } = props;
-	return (
-		<>
-			{themeConfig.footer && (
-				<div className="footer">
-					<a href="http://www.spicyboy.cn/" target="_blank" rel="noreferrer">
-						2023 © admin By Hooks Technology.
-					</a>
-				</div>
-			)}
-		</>
-	);
+	return <>{themeConfig.footer && <div className="footer">2023 © admin By Hooks Technology.</div>}</>;
 };
 
 const mapStateToProps = (state: any) => state.global;

@@ -15,8 +15,3 @@ export const loginApi = (params: Login.ReqLoginForm) => {
 export const getAuthorButtons = () => {
 	return http.get<Login.ResAuthButtons>(PORT1 + `/auth/buttons`);
 };
-
-// * 获取菜单列表
-export const getMenuList = () => {
-	return http.get<Menu.MenuOptions[]>(PORT1 + `/menu/list`);
-};

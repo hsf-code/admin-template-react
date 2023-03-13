@@ -1,38 +1,27 @@
+/* stylelint-disable CssSyntaxError */
+@prefix-cls: ~"@{namespace}-root-container";
+
 /*
 组件样式表
-*/ 
-.container {
+*/
+/* stylelint-disable-next-line CssSyntaxError */
+.@{prefix-cls} {
 	display: flex;
 	min-width: 950px;
 	height: 100%;
-	.header {
-		.logo-box {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			height: 55px;
-			.logo-img {
-				width: 30px;
-				margin: 0;
-			}
-			.logo-text {
-				margin: 0 0 0 10px;
-				font-size: 24px;
-				font-weight: bold;
-				color: #dadada;
-				white-space: nowrap;
-			}
-		}
-	}
+
 	.ant-layout-sider {
 		box-sizing: border-box;
+
 		.ant-layout-sider-children {
 			height: 100%;
 		}
 	}
+
 	.ant-layout {
 		/* 防止 tabs 超出不收缩 */
 		overflow-x: hidden;
+
 		.ant-layout-content {
 			box-sizing: border-box;
 			flex: 1;

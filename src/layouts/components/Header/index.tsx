@@ -1,5 +1,7 @@
+import React from "react";
 import { Layout } from "antd";
-import AvatarIcon from "./components/AvatarIcon";
+import UserInfo from "./components/UserInfo";
+import AdminTitle from "./components/AdminTitle/index";
 // import CollapseIcon from "./components/CollapseIcon";
 // import AssemblySize from "./components/AssemblySize";
 // import Language from "./components/Language";
@@ -7,20 +9,24 @@ import AvatarIcon from "./components/AvatarIcon";
 // import Fullscreen from "./components/Fullscreen";
 import "./index.less";
 
-const LayoutHeader = () => {
-	const { Header } = Layout;
-	const userName: string = "test-1";
+const userName: string = "himalaya";
+const { Header } = Layout;
 
+/**
+ * website -- header
+ * */
+const LayoutHeader: React.FC = () => {
 	return (
-		<Header>
-			<div className="header-lf">{/* <CollapseIcon /> */}</div>
-			<div className="header-ri">
+		<Header className="root-header">
+			<div className="header-left">
+				<AdminTitle />
+			</div>
+			<div className="header-right">
 				{/* <AssemblySize /> */}
 				{/* <Language /> */}
 				{/* <Theme /> */}
 				{/* <Fullscreen /> */}
-				<span className="username">{userName}</span>
-				<AvatarIcon />
+				<UserInfo userName={userName} />
 			</div>
 		</Header>
 	);
