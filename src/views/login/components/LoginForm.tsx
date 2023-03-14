@@ -1,3 +1,4 @@
+import React from "react";
 import md5 from "js-md5";
 import { useState } from "react";
 import { Button, Form, Input, message } from "antd";
@@ -7,12 +8,10 @@ import { loginApi } from "@/api/modules/login";
 import { HOME_URL } from "@/config/config";
 import { connect } from "react-redux";
 import { setToken } from "@/redux/modules/global/action";
-import { useTranslation } from "react-i18next";
 import { setTabsList } from "@/redux/modules/tabs/action";
 import { UserOutlined, LockOutlined, CloseCircleOutlined } from "@ant-design/icons";
 
-const LoginForm = (props: any) => {
-	const { t } = useTranslation();
+const LoginForm: React.FC = (props: any) => {
 	const { setToken, setTabsList } = props;
 	const navigate = useNavigate();
 	const [form] = Form.useForm();
@@ -61,10 +60,10 @@ const LoginForm = (props: any) => {
 					}}
 					icon={<CloseCircleOutlined />}
 				>
-					{t("login.reset")}
+					重置
 				</Button>
 				<Button type="primary" htmlType="submit" loading={loading} icon={<UserOutlined />}>
-					{t("login.confirm")}
+					登录
 				</Button>
 			</Form.Item>
 		</Form>

@@ -1,4 +1,8 @@
-.root-header {
+@header-css-name: ~"@{namespace}-root-header";
+@header-css-name-left: ~"@{namespace}-root-header-left";
+@header-css-name-right: ~"@{namespace}-root-header-right";
+
+.@{header-css-name}{
 	box-sizing: border-box;
 	display: flex;
 	align-items: center;
@@ -7,12 +11,12 @@
 	padding-inline: 24px;
 	background: #ffffff;
 	border-bottom: 1px solid rgb(229 230 235);
-	.header-left {
+	.@{header-css-name-left} {
 		display: flex;
 		align-items: center;
 		height: 100%;
 	}
-	.header-right {
+	.@{header-css-name-right} {
 		display: flex;
 		align-items: center;
 		height: 100%;

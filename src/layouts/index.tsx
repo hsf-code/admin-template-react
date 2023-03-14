@@ -24,21 +24,18 @@ const LayoutIndex: React.FC = (props: any) => {
 	}, [props.isCollapse]);
 
 	return (
-		<Layout className={`${APP_CSS_NAME_PREFIX}-root-container `}>
+		<Layout className={`${APP_CSS_NAME_PREFIX}-root`}>
 			<LayoutHeader></LayoutHeader>
 			<Layout>
-				{/* left content */}
 				<Sider trigger={null} theme={defaultTheme} width={200} collapsible collapsed={props.isCollapse}>
 					<LayoutMenu></LayoutMenu>
 				</Sider>
-				{/* right content */}
-				<Content className={`${APP_CSS_NAME_PREFIX}-root-content `} style={{ background: "rgba(242,243,245)" }}>
+				<Content className={`${APP_CSS_NAME_PREFIX}-root-container`}>
 					<LayoutTabs></LayoutTabs>
 					<BreadcrumbNav />
-					<main style={{ background: "#fff" }}>
-						{/* content show */}
+					<Content className={`${APP_CSS_NAME_PREFIX}-root-content`}>
 						<Outlet></Outlet>
-					</main>
+					</Content>
 					<LayoutFooter></LayoutFooter>
 				</Content>
 			</Layout>

@@ -2,12 +2,8 @@ import React from "react";
 import { Layout } from "antd";
 import UserInfo from "./components/UserInfo";
 import AdminTitle from "./components/AdminTitle/index";
-// import CollapseIcon from "./components/CollapseIcon";
-// import AssemblySize from "./components/AssemblySize";
-// import Language from "./components/Language";
-// import Theme from "./components/Theme";
-// import Fullscreen from "./components/Fullscreen";
 import "./index.less";
+import { APP_CSS_NAME_PREFIX } from "@/config/config";
 
 const userName: string = "himalaya";
 const { Header } = Layout;
@@ -17,15 +13,11 @@ const { Header } = Layout;
  * */
 const LayoutHeader: React.FC = () => {
 	return (
-		<Header className="root-header">
-			<div className="header-left">
+		<Header className={`${APP_CSS_NAME_PREFIX}-root-header`}>
+			<div className={`${APP_CSS_NAME_PREFIX}-root-header-left`}>
 				<AdminTitle />
 			</div>
-			<div className="header-right">
-				{/* <AssemblySize /> */}
-				{/* <Language /> */}
-				{/* <Theme /> */}
-				{/* <Fullscreen /> */}
+			<div className={`${APP_CSS_NAME_PREFIX}-root-header-right`}>
 				<UserInfo userName={userName} />
 			</div>
 		</Header>
